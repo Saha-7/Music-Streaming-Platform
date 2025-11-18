@@ -1,6 +1,7 @@
 import express from 'express'
 import dotenv from "dotenv"
 import mongoose from 'mongoose'
+import userRouter from './route.js'
 
 dotenv.config()
 
@@ -17,6 +18,8 @@ const connectDb= async()=>{
 }
 
 const app=express()
+
+app.use("/api/v1", userRouter)
 
 app.get("/",(req,res)=>{
     res.send("Server is working")
