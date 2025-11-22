@@ -1,11 +1,3 @@
-import type { Request, Response } from "express";
+import { TryCatch } from "./TryCatch.js";
 
-export const registerUser = async(req:Request, res:Response)=>{
-    try{
-        
-    }catch(error){
-        res.status(400).json({
-            message: ""
-        })
-    }
-}
+export const registerUser = TryCatch(async (req, res) =>{})
