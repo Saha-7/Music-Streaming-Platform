@@ -1,8 +1,10 @@
+import type { AuthenticatedRequest } from "./middleware.js";
 import { User } from "./model.js";
 import { TryCatch } from "./TryCatch.js";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 const saltRound=13
+
 
 export const registerUser = TryCatch(async (req, res) =>{
     const {name, email, password} = req.body
@@ -61,4 +63,27 @@ export const loginUser = TryCatch(async(req, res)=>{
         user,
         token
     })
+})
+
+
+
+export const myProfile = TryCatch(async(req:AuthenticatedRequest, res)=>{
+    const user = req.user
+    res.json(user)
+})
+
+
+export const addToPlaylist = TryCatch(async(req: AuthenticatedRequest, res)=>{
+    const userId = req.user?._id
+
+    const user = await User.findById(userId)
+
+    if(!user){
+        res.status(404).json({
+            message: "No user with this id"
+        })
+        return
+    }
+
+    if(user?.playlist)
 })
