@@ -73,17 +73,17 @@ export const myProfile = TryCatch(async(req:AuthenticatedRequest, res)=>{
 })
 
 
-export const addToPlaylist = TryCatch(async(req: AuthenticatedRequest, res)=>{
-    const userId = req.user?._id
+// export const addToPlaylist = TryCatch(async(req: AuthenticatedRequest, res)=>{
+//     const userId = req.user?._id
 
-    const user = await User.findById(userId)
+//     const user = await User.findById(userId)
 
-    if(!user){
-        res.status(404).json({
-            message: "No user with this id"
-        })
-        return
-    }
+//     if(!user){
+//         res.status(404).json({
+//             message: "No user with this id"
+//         })
+//         return
+//     }
 
-    if(user?.playlist)
-})
+//     if(user?.playlist)
+// })
