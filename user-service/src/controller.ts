@@ -47,5 +47,18 @@ export const loginUser = TryCatch(async(req, res)=>{
     }
 
     const isMatch = await bcrypt.compare(password, user.password)
-    
+    if(!isMatch){
+        res.status(400).json({
+            message: "Invalid Password",
+        })
+        return
+    }
+
+    const token = jwt.sign({_id: user._id}, process.env.JWT_SEC as string, { expiresIn: "7d"})
+
+    res.status(200).json({
+        message: "User LoggedIn successfully",
+        user,
+        token
+    })
 })
