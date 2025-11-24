@@ -14,7 +14,6 @@ cloudinary.v2.config({
 
 const app = express();
 
-
 app.use(express.json());
 
 async function initDB() {
