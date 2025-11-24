@@ -1,10 +1,13 @@
 import express from "express";
 import dotenv from "dotenv";
 import { sql } from "./config/db.js";
+import adminRoutes from "./route.js"
 
 dotenv.config();
 
 const app = express();
+
+
 app.use(express.json());
 
 async function initDB() {
@@ -34,6 +37,8 @@ async function initDB() {
     console.log("Error initDb", error);
   }
 }
+
+app.use("/api/v1", adminRoutes)
 
 const port = process.env.PORT;
 
