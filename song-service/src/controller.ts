@@ -27,15 +27,34 @@ export const getAllAlbum = TryCatch(async (req, res) => {
   }
 
   res.json(albums);
-  return
+  return;
 });
 
 export const getAllsongs = TryCatch(async (req, res) => {
   let songs;
+  const CACHE_EXPIRY = 1800;
 
-  songs = await sql`SELECT * FROM songs`;
+  if (redisClient.isReady) {
+    songs = await redisClient.get("songs");
+  }
 
-  res.json(songs);
+  if (songs) {
+    console.log("Cache hit");
+    res.json(JSON.parse(songs));
+    return;
+  } else {
+    console.log("Cache miss");
+    songs = await sql`SELECT * FROM songs`;
+
+    if (redisClient.isReady) {
+      await redisClient.set("songs", JSON.stringify(songs), {
+        EX: CACHE_EXPIRY,
+      });
+    }
+
+    res.json(songs);
+    return;
+  }
 });
 
 export const getAllSongsofAlbum = TryCatch(async (req, res) => {
