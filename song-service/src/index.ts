@@ -2,6 +2,7 @@ import express from "express"
 import dotenv from "dotenv"
 import songRoutes from "./route.js"
 import redis from "redis"
+import cors from 'cors'
 
 
 dotenv.config()
@@ -21,6 +22,7 @@ redisClient.connect().then(()=>console.log("Connected to Redis")).catch(console.
 
 const app = express()
 
+app.use(cors())
 
 const port = process.env.PORT
 
