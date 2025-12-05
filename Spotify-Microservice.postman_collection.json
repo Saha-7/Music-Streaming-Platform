@@ -1,0 +1,421 @@
+{
+	"info": {
+		"_postman_id": "c51f6004-807e-4f09-bece-c81817b97dc4",
+		"name": "Spotify-Microservice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27257225"
+	},
+	"item": [
+		{
+			"name": "user-service",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Elon\",\r\n    \"email\": \"elon@gmail.com\",\r\n    \"password\": \"Elon@123\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"elon@gmail.com\",\r\n    \"password\": \"Elon@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "myProfile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTIyYjQ2NGY5ZjIzMzNhYzY2Zjg1YTEiLCJpYXQiOjE3NjM5ODQ0OTMsImV4cCI6MTc2NDU4OTI5M30.AL9tJ64g8B6-Jz2lnwXt0dpw_cUgMRh7ZG2rj3txFwU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/user/my-profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"my-profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin-service",
+			"item": [
+				{
+					"name": "add-Album",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTIyYjQ2NGY5ZjIzMzNhYzY2Zjg1YTEiLCJpYXQiOjE3NjQwNDY1MjMsImV4cCI6MTc2NDY1MTMyM30.ARgXgW5cUPLUu2n6cXstxbPt3ImbunnAhJzxOEwv5IY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Top 10 Songs",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "New top 10 songs added",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/D:/Spotify-Assets/Albums/t10.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:7000/api/v1/album/new",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1",
+								"album",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add-song",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTIyYjQ2NGY5ZjIzMzNhYzY2Zjg1YTEiLCJpYXQiOjE3NjQwNDY1MjMsImV4cCI6MTc2NDY1MTMyM30.ARgXgW5cUPLUu2n6cXstxbPt3ImbunnAhJzxOEwv5IY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Experimental",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "It is a Hip-Hop song.",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/D:/Spotify-Assets/Songs/experimental-cinematic-hip-hop-315904.mp3"
+								},
+								{
+									"key": "album",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:7000/api/v1/song/new",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1",
+								"song",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add-thumbnail",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTIyYjQ2NGY5ZjIzMzNhYzY2Zjg1YTEiLCJpYXQiOjE3NjQwNDY1MjMsImV4cCI6MTc2NDY1MTMyM30.ARgXgW5cUPLUu2n6cXstxbPt3ImbunnAhJzxOEwv5IY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/D:/Spotify-Assets/Thumbnail/song-669786_640.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:7000/api/v1/song/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1",
+								"song",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-album",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTIyYjQ2NGY5ZjIzMzNhYzY2Zjg1YTEiLCJpYXQiOjE3NjM5ODQ0OTMsImV4cCI6MTc2NDU4OTI5M30.AL9tJ64g8B6-Jz2lnwXt0dpw_cUgMRh7ZG2rj3txFwU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost:7000/api/v1/album/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1",
+								"album",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-song",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTIyYjQ2NGY5ZjIzMzNhYzY2Zjg1YTEiLCJpYXQiOjE3NjM5ODQ0OTMsImV4cCI6MTc2NDU4OTI5M30.AL9tJ64g8B6-Jz2lnwXt0dpw_cUgMRh7ZG2rj3txFwU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:7000/api/v1/song/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"v1",
+								"song",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "song-service",
+			"item": [
+				{
+					"name": "all-album",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTIyYjQ2NGY5ZjIzMzNhYzY2Zjg1YTEiLCJpYXQiOjE3NjM5ODQ0OTMsImV4cCI6MTc2NDU4OTI5M30.AL9tJ64g8B6-Jz2lnwXt0dpw_cUgMRh7ZG2rj3txFwU",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/album/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"album",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all-songs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/song/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"song",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all-Songs-of-Album",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/album/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"album",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single-song",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/song/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"song",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
